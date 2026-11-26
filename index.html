@@ -4,24 +4,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#081426">
 <title>Jessica Cano | Operations Leadership</title>
 
 <style>
 :root {
   --navy: #081426;
-  --navy2: #101f36;
+  --navy2: #12233b;
   --gold: #d9b66d;
   --white: #f5f4f0;
   --muted: #aab5c6;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  background: var(--navy);
   color: var(--white);
   font-family: Arial, Helvetica, sans-serif;
+  background: var(--navy);
   overflow-x: hidden;
 }
 
@@ -29,140 +36,261 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(circle at 50% 20%, #203655 0%, transparent 50%),
-    linear-gradient(140deg, #081426, #101f36 55%, #07111f);
   z-index: -2;
+  background:
+    radial-gradient(circle at 50% 15%, #223957 0%, transparent 48%),
+    linear-gradient(145deg, #081426, #102139 60%, #07111f);
 }
 
-.gold-line {
-  height: 1px;
-  width: 0;
-  margin: 30px auto;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  animation: lineReveal 1.5s ease forwards 1s;
+body::after {
+  content: "";
+  position: fixed;
+  width: 45vw;
+  height: 45vw;
+  top: -20vw;
+  left: -20vw;
+  border-radius: 50%;
+  border: 1px solid rgba(217,182,109,.08);
+  box-shadow:
+    0 0 0 50px rgba(217,182,109,.02),
+    0 0 0 100px rgba(217,182,109,.015);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .container {
-  width: min(900px, 92%);
+  width: min(950px, 92%);
   margin: auto;
+  padding: 35px 15px 70px;
   text-align: center;
-  padding: 70px 20px;
 }
+
+/* LANGUAGE SWITCH */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 65px;
+  animation: fadeIn 1s ease both;
+}
+
+.brand {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.lang-switch {
+  display: flex;
+  border: 1px solid rgba(217,182,109,.4);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 0;
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: bold;
+}
+
+/* INTRO */
 
 .eyebrow {
   color: var(--gold);
   letter-spacing: 5px;
   font-size: 12px;
-  opacity: 0;
-  animation: fadeUp 1s forwards .3s;
+  margin-bottom: 30px;
+  animation: fadeUp 1s ease both .2s;
 }
 
 h1 {
   font-family: Georgia, serif;
   font-weight: normal;
-  font-size: clamp(38px, 7vw, 76px);
+  font-size: clamp(40px, 7vw, 78px);
   line-height: 1.12;
-  margin: 30px 0;
-  opacity: 0;
-  animation: fadeUp 1.2s forwards .8s;
+  margin: 25px 0;
+  animation: fadeUp 1.2s ease both .5s;
 }
 
-h1 span { color: var(--gold); font-style: italic; }
+h1 span {
+  color: var(--gold);
+  font-style: italic;
+}
 
 .subtitle {
   color: var(--muted);
   font-size: clamp(15px, 2vw, 20px);
-  line-height: 1.7;
-  max-width: 650px;
-  margin: auto;
-  opacity: 0;
-  animation: fadeUp 1s forwards 1.4s;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 25px auto;
+  animation: fadeUp 1s ease both .9s;
 }
+
+.gold-line {
+  height: 1px;
+  width: 70%;
+  margin: 38px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  animation: lineReveal 1.4s ease forwards 1s;
+}
+
+/* NAME */
 
 .name {
   font-family: Georgia, serif;
   letter-spacing: 9px;
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: clamp(30px, 5vw, 50px);
   margin: 35px 0 12px;
-  opacity: 0;
-  animation: fadeUp 1s forwards 1.8s;
+  animation: fadeUp 1s ease both 1.2s;
 }
 
 .role {
   color: var(--gold);
   letter-spacing: 4px;
   font-size: 13px;
-  opacity: 0;
-  animation: fadeUp 1s forwards 2.1s;
+  animation: fadeUp 1s ease both 1.5s;
+}
+
+/* IMPACT */
+
+.section {
+  margin-top: 85px;
+}
+
+.section-heading {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 30px;
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  margin: 55px 0;
-  opacity: 0;
-  animation: fadeUp 1s forwards 2.5s;
 }
 
 .stat {
-  padding: 25px 15px;
-  border: 1px solid rgba(217,182,109,.25);
+  padding: 30px 18px;
+  border: 1px solid rgba(217,182,109,.24);
   background: rgba(255,255,255,.025);
   border-radius: 12px;
+  backdrop-filter: blur(4px);
+  transition: .3s;
 }
 
-.stat strong {
+.stat:hover {
+  transform: translateY(-5px);
+  border-color: rgba(217,182,109,.65);
+  background: rgba(217,182,109,.04);
+}
+
+.stat-number {
   display: block;
   font-family: Georgia, serif;
-  font-size: clamp(24px, 4vw, 38px);
+  font-size: clamp(26px, 4vw, 40px);
   color: var(--gold);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
-.stat span {
+.stat-description {
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.65;
 }
 
-.section-title {
-  letter-spacing: 3px;
-  font-size: 12px;
-  color: var(--gold);
-  margin-bottom: 22px;
-}
+/* EXPERTISE */
 
 .skills {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 45px;
-  opacity: 0;
-  animation: fadeUp 1s forwards 2.8s;
 }
 
 .skills span {
-  border: 1px solid rgba(217,182,109,.35);
-  border-radius: 50px;
-  padding: 10px 16px;
+  border: 1px solid rgba(217,182,109,.3);
+  border-radius: 30px;
+  padding: 11px 16px;
   font-size: 12px;
   color: #e5e9ef;
+  transition: .3s;
 }
+
+.skills span:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* PROFILE */
+
+.profile-text {
+  max-width: 750px;
+  margin: auto;
+  text-align: left;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.profile-text strong {
+  color: var(--white);
+  font-weight: normal;
+}
+
+.experience {
+  text-align: left;
+  border-left: 1px solid rgba(217,182,109,.45);
+  padding: 5px 0 5px 25px;
+  margin: 30px auto;
+  max-width: 750px;
+}
+
+.experience h3 {
+  color: var(--white);
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.experience p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.experience .tag {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+/* CTA */
 
 .buttons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 14px;
-  opacity: 0;
-  animation: fadeUp 1s forwards 3.1s;
+  margin-top: 35px;
 }
 
 .btn {
-  padding: 16px 24px;
+  display: inline-block;
+  padding: 16px 25px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 12px;
@@ -186,100 +314,335 @@ h1 span { color: var(--gold); font-style: italic; }
   box-shadow: 0 8px 25px rgba(217,182,109,.15);
 }
 
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
 footer {
-  margin-top: 70px;
+  margin-top: 80px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(217,182,109,.15);
   color: #77859a;
   font-size: 11px;
   letter-spacing: 2px;
 }
 
-footer span { color: var(--gold); }
+footer strong {
+  color: var(--gold);
+  font-weight: normal;
+}
+
+/* ANIMATIONS */
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes lineReveal {
-  to { width: 70%; }
+  to { transform: scaleX(1); }
 }
 
-@media (max-width: 600px) {
-  .container { padding: 55px 8px; }
-  .stats { grid-template-columns: 1fr; gap: 12px; }
-  .stat { padding: 18px; }
-  .name { letter-spacing: 5px; }
-  .buttons { flex-direction: column; }
-  .btn { width: 100%; }
+@keyframes goldShimmer {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
+.gold-line {
+  animation:
+    lineReveal 1.4s ease forwards 1s,
+    goldShimmer 3s ease-in-out infinite 2.5s;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .container {
+    padding: 25px 10px 55px;
+  }
+
+  .topbar {
+    margin-bottom: 50px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stat {
+    padding: 24px;
+  }
+
+  .name {
+    letter-spacing: 5px;
+  }
+
+  .buttons,
+  .contact-grid {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .section {
+    margin-top: 65px;
+  }
+
+  .experience {
+    padding-left: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
-  <div class="eyebrow">OPERATIONS · SERVICE DELIVERY · AI</div>
+  <div class="topbar">
+    <div class="brand">JC · EXECUTIVE PROFILE</div>
 
-  <div class="gold-line"></div>
+    <div class="lang-switch" aria-label="Language">
+      <button class="lang-btn active" id="btnEN" onclick="setLanguage('en')">EN</button>
+      <button class="lang-btn" id="btnES" onclick="setLanguage('es')">ES</button>
+    </div>
+  </div>
 
-  <h1>Transformo operaciones<br>
-  <span>en resultados.</span></h1>
+  <div class="eyebrow" data-en="OPERATIONS · SERVICE DELIVERY · AI"
+                   data-es="OPERACIONES · SERVICIO · INTELIGENCIA ARTIFICIAL">
+    OPERATIONS · SERVICE DELIVERY · AI
+  </div>
 
-  <p class="subtitle">
-    Leadership, continuous improvement and intelligent solutions
-    for real-world business challenges.
+  <h1>
+    <span data-en="Transforming operations"
+          data-es="Transformo operaciones">Transforming operations</span><br>
+    <span data-en="into results." data-es="en resultados.">into results.</span>
+  </h1>
+
+  <p class="subtitle"
+     data-en="Leadership, continuous improvement and intelligent solutions for real-world business challenges."
+     data-es="Liderazgo, mejora continua y soluciones inteligentes para desafíos reales de negocio.">
+    Leadership, continuous improvement and intelligent solutions for real-world business challenges.
   </p>
 
   <div class="gold-line"></div>
 
   <div class="name">JESSICA CANO</div>
-  <div class="role">OPERATIONS LEADERSHIP</div>
 
-  <div class="stats">
-    <div class="stat">
-      <strong>$35,000+</strong>
-      <span>Annual savings delivered through process improvement</span>
-    </div>
-    <div class="stat">
-      <strong>15 hrs</strong>
-      <span>Weekly manual work reduced through automation</span>
-    </div>
-    <div class="stat">
-      <strong>AI + Ops</strong>
-      <span>Intelligent workflows, reporting & problem solving</span>
-    </div>
+  <div class="role"
+       data-en="OPERATIONS LEADERSHIP"
+       data-es="LIDERAZGO DE OPERACIONES">
+    OPERATIONS LEADERSHIP
   </div>
 
-  <div class="section-title">CORE EXPERTISE</div>
+  <!-- IMPACT -->
+  <section class="section">
+    <div class="section-heading"
+         data-en="MEASURABLE IMPACT"
+         data-es="RESULTADOS MEDIBLES">
+      MEASURABLE IMPACT
+    </div>
 
-  <div class="skills">
-    <span>Operations Leadership</span>
-    <span>Service Delivery</span>
-    <span>Continuous Improvement</span>
-    <span>AI Automation</span>
-    <span>KPI Reporting</span>
-    <span>SAP</span>
-    <span>Process Optimization</span>
-    <span>Stakeholder Management</span>
-  </div>
+    <div class="stats">
+      <div class="stat">
+        <strong class="stat-number">$35,000+</strong>
+        <div class="stat-description"
+             data-en="Annual savings through process and reporting improvements"
+             data-es="Ahorro anual mediante mejoras de procesos y reportes">
+          Annual savings through process and reporting improvements
+        </div>
+      </div>
 
-  <div class="buttons">
-    <a class="btn btn-primary"
-       href="https://drive.google.com/file/d/1hKJXWvNwP7OqYU3_XCzt7BPuh50sxLYg/view"
-       target="_blank" rel="noopener">
-       VIEW MY PROFILE
-    </a>
+      <div class="stat">
+        <strong class="stat-number">15 hrs</strong>
+        <div class="stat-description"
+             data-en="Weekly reduction in manual work through automation"
+             data-es="Horas semanales reducidas de trabajo manual mediante automatización">
+          Weekly reduction in manual work through automation
+        </div>
+      </div>
 
-    <a class="btn btn-secondary"
-       href="https://drive.google.com/uc?export=download&id=1hKJXWvNwP7OqYU3_XCzt7BPuh50sxLYg">
-       DOWNLOAD MY CV
-    </a>
-  </div>
+      <div class="stat">
+        <strong class="stat-number">AI + OPS</strong>
+        <div class="stat-description"
+             data-en="Practical AI agents and intelligent workflows"
+             data-es="Agentes de IA y flujos de trabajo inteligentes aplicados al negocio">
+        Practical AI agents and intelligent workflows
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="section">
+    <div class="section-heading"
+         data-en="CORE EXPERTISE"
+         data-es="ÁREAS DE ESPECIALIDAD">
+      CORE EXPERTISE
+    </div>
+
+    <div class="skills">
+      <span data-en="Operations Leadership" data-es="Liderazgo de operaciones">Operations Leadership</span>
+      <span data-en="Service Delivery" data-es="Gestión de servicios">Service Delivery</span>
+      <span data-en="Continuous Improvement" data-es="Mejora continua">Continuous Improvement</span>
+      <span data-en="AI & Automation" data-es="IA y automatización">AI & Automation</span>
+      <span data-en="KPI Reporting" data-es="Reportes e indicadores KPI">KPI Reporting</span>
+      <span>SAP ECC</span>
+      <span data-en="Process Optimization" data-es="Optimización de procesos">Process Optimization</span>
+      <span data-en="Stakeholder Management" data-es="Gestión de stakeholders">Stakeholder Management</span>
+      <span>Excel · VBA</span>
+      <span>Power Automate</span>
+      <span data-en="Root Cause Analysis" data-es="Análisis de causa raíz">Root Cause Analysis</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="section-heading"
+         data-en="PROFESSIONAL PROFILE"
+         data-es="PERFIL PROFESIONAL">
+      PROFESSIONAL PROFILE
+    </div>
+
+    <div class="profile-text"
+         data-en="Operations and customer experience professional with 15+ years across multinational automotive, consumer goods, supply chain and B2B service environments. Experienced in cross-functional execution, operational problem-solving, KPI reporting and stakeholder alignment. I develop AI agents and automated workflows that simplify business reporting, documentation and analysis — turning complex processes into measurable impact."
+         data-es="Profesional de operaciones y experiencia al cliente con más de 15 años en entornos multinacionales de automoción, bienes de consumo, cadena de suministro y servicios B2B. Experiencia en ejecución transversal, resolución de problemas operativos, reportes KPI y alineación de stakeholders. Desarrollo agentes de IA y flujos automatizados que simplifican reportes, documentación y análisis de negocio, convirtiendo procesos complejos en resultados medibles.">
+      Operations and customer experience professional with 15+ years across multinational automotive, consumer goods, supply chain and B2B service environments. Experienced in cross-functional execution, operational problem-solving, KPI reporting and stakeholder alignment. I develop AI agents and automated workflows that simplify business reporting, documentation and analysis — turning complex processes into measurable impact.
+    </div>
+  </section>
+
+  <!-- EXPERIENCE HIGHLIGHT -->
+  <section class="section">
+    <div class="section-heading"
+         data-en="EXPERIENCE HIGHLIGHTS"
+         data-es="EXPERIENCIA DESTACADA">
+      EXPERIENCE HIGHLIGHTS
+    </div>
+
+    <div class="experience">
+      <div class="tag">2023 — 2026</div>
+      <h3>Visscher-Caravelle</h3>
+      <p data-en="Customer service, logistics and process improvement in automotive operations. Coordinated customer requirements, delivery execution, reporting, SAP workflows and cross-functional follow-up."
+         data-es="Servicio al cliente, logística y mejora de procesos en operaciones automotrices. Coordinación de requerimientos de clientes, entregas, reportes, procesos SAP y seguimiento transversal.">
+        Customer service, logistics and process improvement in automotive operations. Coordinated customer requirements, delivery execution, reporting, SAP workflows and cross-functional follow-up.
+      </p>
+    </div>
+
+    <div class="experience">
+      <div class="tag">2016 — 2019</div>
+      <h3>Grupo Modelo</h3>
+      <p data-en="Operations project management, distribution execution, innovation launches and KPI monitoring."
+         data-es="Gestión de proyectos operativos, ejecución de distribución, lanzamientos de innovación y monitoreo de indicadores.">
+        Operations project management, distribution execution, innovation launches and KPI monitoring.
+      </p>
+    </div>
+
+    <div class="experience">
+      <div class="tag">2014 — 2016</div>
+      <h3>Nestlé</h3>
+      <p data-en="Supply chain purchasing, supplier coordination, procurement execution and SAP purchasing workflow improvements."
+         data-es="Compras de cadena de suministro, coordinación de proveedores, ejecución de adquisiciones y mejoras de procesos de compra en SAP.">
+        Supply chain purchasing, supplier coordination, procurement execution and SAP purchasing workflow improvements.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section">
+    <div class="section-heading"
+         data-en="LET'S CONNECT"
+         data-es="CONECTEMOS">
+      LET'S CONNECT
+    </div>
+
+    <p class="subtitle"
+       data-en="Interested in operations leadership, service delivery, process transformation or AI-enabled improvement? Let's talk."
+       data-es="¿Buscas liderazgo operativo, gestión de servicios, transformación de procesos o mejoras con IA? Conversemos.">
+      Interested in operations leadership, service delivery, process transformation or AI-enabled improvement? Let's talk.
+    </p>
+
+    <div class="contact-grid">
+      <a class="btn btn-secondary"
+         href="https://www.linkedin.com/in/jessica-cano-0b569155/"
+         target="_blank" rel="noopener"
+         data-en="CONNECT ON LINKEDIN"
+         data-es="CONECTAR EN LINKEDIN">
+         CONNECT ON LINKEDIN
+      </a>
+
+      <a class="btn btn-secondary"
+         href="mailto:jessitzelcano@gmail.com"
+         data-en="CONTACT VIA EMAIL"
+         data-es="CONTACTAR POR EMAIL">
+         CONTACT VIA EMAIL
+      </a>
+    </div>
+
+    <div class="buttons">
+      <a class="btn btn-primary"
+         href="https://drive.google.com/file/d/1hKJXWvNwP7OqYU3_XCzt7BPuh50sxLYg/view"
+         target="_blank" rel="noopener"
+         data-en="VIEW MY CV"
+         data-es="VER MI CV">
+         VIEW MY CV
+      </a>
+
+      <a class="btn btn-secondary"
+         href="https://drive.google.com/uc?export=download&id=1hKJXWvNwP7OqYU3_XCzt7BPuh50sxLYg"
+         data-en="DOWNLOAD MY CV"
+         data-es="DESCARGAR MI CV">
+         DOWNLOAD MY CV
+      </a>
+    </div>
+  </section>
 
   <footer>
-    <span>JESSICA CANO</span> · TURNING OPERATIONS INTO IMPACT
+    <strong>JESSICA CANO</strong><br><br>
+    <span data-en="TURNING OPERATIONS INTO IMPACT"
+          data-es="TRANSFORMANDO OPERACIONES EN IMPACTO">
+      TURNING OPERATIONS INTO IMPACT
+    </span>
   </footer>
 
 </div>
+
+<script>
+function setLanguage(lang) {
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-en]").forEach(element => {
+    element.textContent = element.getAttribute("data-" + lang);
+  });
+
+  document.getElementById("btnEN").classList.toggle("active", lang === "en");
+  document.getElementById("btnES").classList.toggle("active", lang === "es");
+}
+</script>
+
 </body>
 </html>
